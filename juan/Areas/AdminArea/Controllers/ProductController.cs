@@ -25,7 +25,7 @@ namespace Juan.Areas.AdminArea.Controllers
             //productsImg = _context.Images.Where(pi => pi.isMain).ToList();
             //products = _context.Products.Include(p => p.Images).Include(p => p.ProductCategories).ThenInclude(pc => pc.Categories)
             //  .Where(p => !p.isDeleted && p.Images.Any(pi => pi.isMain)).ToList();
-            products = _context.Products.Include(p => p.Images).Where(p => !p.isDeleted && p.Images.Any(pi => pi.isMain)).ToList();
+            products = _context.Products.Include(p => p.Images).Where(p => !p.isDeleted && p.Images.Any(pi => !pi.isMain)).Take(9).ToList();
         }
         public IActionResult Index()
         {
@@ -62,57 +62,46 @@ namespace Juan.Areas.AdminArea.Controllers
             {
                 //Images = product.Images,
                 Name = product.Name,
-                DiscountPercent = product.DiscountPercent,
-              
-            //Images = (ICollection<ProductImages>)product.Photo
-            //Images=  (ICollection<ProductImages>)product.Photo.SaveFileAsync(_env.WebRootPath, "assets/img/slider")
-        };
+                DiscountPercent = product.DiscountPercent
+            };
+
+            string image = await product.Photo.SaveFileAsync(_env.WebRootPath, "assets/img/product");
+
+            ProductImages productImages = new ProductImages
+            {
+                Image = image
+            };
+            List<ProductImages> images = new List<ProductImages>();
+            images.Add(productImages);
+
+            newProduct.Images = images;
+
             await _context.AddAsync(newProduct);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
           
         }
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-
-        //public async Task<IActionResult> Create(int? id, ProductCreateVM product)
+      
+        //public async Task<IActionResult> Delete(int? id)
         //{
-        //    if (!ModelState.IsValid)
+        //    if (id == null)
         //    {
-        //        return View();
+        //        return BadRequest();
         //    }
-
-        //    if (!product.Photo.CheckFileSize(200))
+        //    var dbProduct = _context.Products.Find(id);
+        //    if (dbProduct == null)
         //    {
-        //        ModelState.AddModelError("Photo", "max size must be less than 200kb");
-        //        return View();
+        //        return NotFound();
         //    }
-        //    //var path = Helper.GetPath(_env.WebRootPath, "img", product.Images.FirstOrDefault().Image);
-        //    product.Images.FirstOrDefault().Image = await product.Photo.SaveFileAsync(_env.WebRootPath, "assets/img/product");
-        //    await _context.Products.AddAsync(product);
+        //    var path = Helper.GetPath(_env.WebRootPath, "img", dbProduct.Images.FirstOrDefault().Image);
+        //    if (System.IO.File.Exists(path))
+        //    {
+        //        System.IO.File.Delete(path);
+        //    }
+        //    _context.Products.Remove(dbProduct);
         //    await _context.SaveChangesAsync();
         //    return RedirectToAction(nameof(Index));
-        //}
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return BadRequest();
-            }
-            var dbProduct = _context.Products.Find(id);
-            if (dbProduct == null)
-            {
-                return NotFound();
-            }
-            var path = Helper.GetPath(_env.WebRootPath, "img", dbProduct.Images.FirstOrDefault().Image);
-            if (System.IO.File.Exists(path))
-            {
-                System.IO.File.Delete(path);
-            }
-            _context.Products.Remove(dbProduct);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
 
-        }
+        //}
     }
 }
