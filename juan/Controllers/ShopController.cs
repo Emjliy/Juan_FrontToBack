@@ -25,16 +25,16 @@ namespace Juan.Controllers
             ShopViewModel shop = new ShopViewModel
             {
                 Products = _context.Products.Include(p => p.Images).Include(p => p.ProductCategories).ThenInclude(pc => pc.Categories)
-                .Where(p => !p.isDeleted && p.Images.Any(pi => pi.isMain)).ToList(),
+                .Where(p => !p.isDeleted && p.Images.Any(pi => pi.isMain)).Take(9).ToList(),
 
             };
             return View(shop);
         }
-        //public IActionResult Detail(int? id)
-        //{
-        //    Product product = _context.Products.FirstOrDefault(p => p.ID == id);
-        //    return View(product);
-        //}
+        public IActionResult Detail(int? id)
+        {
+          
+            return View();
+        }
 
     }
     }

@@ -1,34 +1,41 @@
-﻿@{
+﻿@*@{
+        ViewData["Title"] = "Detail";
+    }
+
+    <h1>Detail</h1>*@
+@model ShopViewModel
+@{
     ViewData["Title"] = "Detail";
 }
 
 <h1>Detail</h1>
-<div class="product-list-item mb-30">
-    <div class="product-thumb">
-        <a href="product-details.html">
-            <img src="assets/img/product/product-1.jpg" alt="product thumb">
-        </a>
-    </div>
-    <div class="product-content-list">
-        <h5 class="product-name">
-            <a href="product-details.html">Leather Mens Slipper</a>
-        </h5>
-        <div class="price-box">
-            <span class="price-regular">$80.00</span>
-            <span class="price-old"><del>$70.00</del></span>
-        </div>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce posuere
-            metus vitae arcu imperdiet, id aliquet ante scelerisque. Sed sit amet
-            sem vitae urna fringilla tempus.
-        </p>
-        <div class="product-link-2 position-static">
-            <a href="#" data-toggle="tooltip" title="Wishlist"><i class="ion-android-favorite-outline"></i></a>
-            <a href="#" data-toggle="tooltip" title="Add To Cart"><i class="ion-bag"></i></a>
-            <a href="#" data-toggle="modal" data-target="#quick_view">
-                <span data-toggle="tooltip"
-                      title="Quick View"><i class="ion-ios-eye-outline"></i></span>
+@*@foreach (var product in Model.Products)
+{
+    <div class="product-list-item mb-30">
+        <div class="product-thumb">
+            <a href="product-details.html">
+                <img src="assets/img/product/product-1.jpg" alt="product thumb">
             </a>
         </div>
+        <div class="product-content-list">
+            <h5 class="product-name">
+                <a href="product-details.html">@product.Images.First().Image</a>
+            </h5>
+            <div class="price-box">
+                <span class="price-regular">$80.00</span>
+                <span class="price-old"><del>$70.00</del></span>
+            </div>
+            <p>
+              @product.Description
+            </p>
+            <div class="product-link-2 position-static">
+                <a href="#" data-toggle="tooltip" title="Wishlist"><i class="ion-android-favorite-outline"></i></a>
+                <a href="#" data-toggle="tooltip" title="Add To Cart"><i class="ion-bag"></i></a>
+                <a href="#" data-toggle="modal" data-target="#quick_view">
+                    <span data-toggle="tooltip"
+                          title="Quick View"><i class="ion-ios-eye-outline"></i></span>
+                </a>
+            </div>
+        </div>
     </div>
-</div>
+}*@

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Emilia\\Desktop\\NewJuanF\\Juan\\Juan.csproj": {}
+    "C:\\Users\\Emilia\\Source\\Repos\\Juan_FrontToBack\\Juan\\Juan.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Emilia\\Desktop\\NewJuanF\\Juan\\Juan.csproj": {
+    "C:\\Users\\Emilia\\Source\\Repos\\Juan_FrontToBack\\Juan\\Juan.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Emilia\\Desktop\\NewJuanF\\Juan\\Juan.csproj",
+        "projectUniqueName": "C:\\Users\\Emilia\\Source\\Repos\\Juan_FrontToBack\\Juan\\Juan.csproj",
         "projectName": "Juan",
-        "projectPath": "C:\\Users\\Emilia\\Desktop\\NewJuanF\\Juan\\Juan.csproj",
+        "projectPath": "C:\\Users\\Emilia\\Source\\Repos\\Juan_FrontToBack\\Juan\\Juan.csproj",
         "packagesPath": "C:\\Users\\Emilia\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Emilia\\Desktop\\NewJuanF\\Juan\\obj\\",
+        "outputPath": "C:\\Users\\Emilia\\Source\\Repos\\Juan_FrontToBack\\Juan\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Emilia\\AppData\\Roaming\\NuGet\\NuGet.Config",
