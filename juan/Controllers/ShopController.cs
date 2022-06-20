@@ -33,5 +33,10 @@ namespace Juan.Controllers
         {
             return View();
         }
+        public IActionResult LoadMore(int skip)
+        {
+            List<Product> products = _context.Products.OrderByDescending(p => p.ID).Skip(skip).Take(9).ToList();
+            return Json(products);
+        }
     }
     }

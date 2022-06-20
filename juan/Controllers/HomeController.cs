@@ -23,7 +23,7 @@ namespace Juan.Controllers
                 Slider = _context.Slider.ToList(),
                 Categories = _context.Categories.Where(c => !c.isDeleted).ToList(),
                 Products = _context.Products.Include(p => p.Images).Include(p => p.ProductCategories).ThenInclude(pc => pc.Categories)
-                .Where(p => !p.isDeleted && p.Images.Any(pi => pi.isMain)).Take(8).ToList(),
+                .Where(p => !p.isDeleted && p.Images.Any(pi =>!pi.isMain)).Take(6).ToList(),
                 //Categories = _context.Categories.Where(c => !c.isDeleted)
                 //.Include(pc => pc.ProductCategories).ThenInclude(ct => ct.Products).ToList(),
                 Blogs = _context.Blogs.ToList(),

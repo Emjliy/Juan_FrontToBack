@@ -1,6 +1,22 @@
 (function ($) {
 	"use strict";
+	$(document).on('click', '#first-button', function () {
+		console.log(first);
+		let length = $("#product-list").children.length;
+		console.log(length);
 
+		//$.ajax({
+		//	url: `http://localhost:44780/Shop/loadmore?skip=${length}`,
+		//	method: "GET",
+		//	success: function (res) {
+		//		console.log(res)
+		//		if (res == "") {	
+		//			$("#first").css("display", "none");
+		//		}
+		//		$("#shop-product-wrap").append(res);
+		//	}
+		//})
+	})
 	// Sticky menu 
 	var $window = $(window);
 	$window.on('scroll', function () {

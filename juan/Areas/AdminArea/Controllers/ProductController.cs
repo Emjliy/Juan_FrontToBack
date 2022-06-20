@@ -81,27 +81,28 @@ namespace Juan.Areas.AdminArea.Controllers
             return RedirectToAction(nameof(Index));
           
         }
-      
-        //public async Task<IActionResult> Delete(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return BadRequest();
-        //    }
-        //    var dbProduct = _context.Products.Find(id);
-        //    if (dbProduct == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    var path = Helper.GetPath(_env.WebRootPath, "img", dbProduct.Images.FirstOrDefault().Image);
-        //    if (System.IO.File.Exists(path))
-        //    {
-        //        System.IO.File.Delete(path);
-        //    }
-        //    _context.Products.Remove(dbProduct);
-        //    await _context.SaveChangesAsync();
-        //    return RedirectToAction(nameof(Index));
 
-        //}
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null)
+            {
+                return BadRequest();
+            }
+            var dbProduct = _context.Products.Find(id);
+            if (dbProduct == null)
+            {
+                return NotFound();
+            }
+            var path = Helper.GetPath(_env.WebRootPath, "img", dbProduct.Images.FirstOrDefault().Image);
+            if (System.IO.File.Exists(path))
+            {
+                System.IO.File.Delete(path);
+            }
+            _context.Products.Remove(dbProduct);
+            dbProduct.isDeleted = true;
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+
+        }
     }
 }
