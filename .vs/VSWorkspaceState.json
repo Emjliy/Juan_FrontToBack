@@ -1,7 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\juan",
+    "\\juan\\ViewModels",
+    "\\juan\\ViewModels\\CategoryViewModel"
   ],
-  "SelectedNode": "\\Juan.sln",
+  "SelectedNode": "\\juan\\ViewModels\\CategoryViewModel\\CategoryCreateVM.cs",
   "PreviewInSolutionExplorer": false
 }
